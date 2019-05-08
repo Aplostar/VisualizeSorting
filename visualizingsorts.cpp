@@ -9,17 +9,19 @@
 
 using namespace std;
 
+// Class containing of all the sorting algorithms and the array
 class vizsort
 {
 	private:
-		vector<int>arr;
+		vector<int>arr;							// Array is private
 	public:
-		vizsort();
-		vector<int>getarr();
-		int arrsize();
+		vizsort();								// Constructor declaration
+		
 		void cprint();
-		void swapprint(int a,int b);
+		void swapprint(int a,int b);			// Display functions
 		void solidprint(int a,int b);
+		
+		int arrsize();							// Sorting functions and their subparts
 		void bubblesort();
 		void insertionsort();
 		void selectionsort();
@@ -40,6 +42,7 @@ int main()
 	vizsort s;
 	s.cprint();
 	s.mergesort(0,s.arrsize());
+	
 	setfillstyle(SOLID_FILL,GREEN);
 	s.cprint();
 	getch();
@@ -47,6 +50,7 @@ int main()
 	closegraph();
 }
 
+// Constructor for the class to initialize the array
 vizsort::vizsort(){
 	srand(time(0));
 	for(int i = 0;i<250;i++)
@@ -54,17 +58,13 @@ vizsort::vizsort(){
 		arr.push_back(rand()%850+1);	
 	}
 }
+
+// Function to return the array size
 int vizsort::arrsize(){
 	return arr.size();
 }
-vector<int> vizsort::getarr(){
-	vector<int>a;
-	for(int i = 0;i<arr.size();i++)
-	{
-		a[i]=arr[i];
-	}
-	return a;
-}
+
+// Function to display the whole array with solid bars
 void vizsort::cprint(){
 	for(int i = 0;i<arr.size();i++)
 	{
@@ -86,6 +86,8 @@ void vizsort::swapprint(int a,int b){
 	delay(1);
 }
 
+
+// Bubble sort algorithm
 void vizsort::bubblesort(){
 	for(int i = 0;i<arr.size();i++)
 	{
@@ -103,6 +105,8 @@ void vizsort::bubblesort(){
 		}
 	}
 }
+
+// Selection sort algorithm
 void vizsort::selectionsort()
 {
 	for(int i = 0;i<arr.size();i++)
@@ -118,6 +122,8 @@ void vizsort::selectionsort()
 		}
 	}	
 }
+
+// Insertion Sort Algorithm
 void vizsort::insertionsort()
 {
 	for(int i = 1;i<arr.size();i++)
@@ -133,6 +139,8 @@ void vizsort::insertionsort()
 		}
 	}
 }
+
+// Partition member function for quick sort with last element as pivot
 int vizsort::partition(int low,int high)
 {
 	int i = low,j=low-1;
@@ -153,6 +161,7 @@ int vizsort::partition(int low,int high)
 	swapprint(j+1,high);
 	return j+1;
 }
+// Quick sort algorithm
 void vizsort::quicksort(int low,int high)
 {
 	if(low<high){
@@ -162,6 +171,8 @@ void vizsort::quicksort(int low,int high)
 	}
 }
 
+
+// Merge sort algorithm
 void vizsort::merge(int l, int m, int r){
 	int i = l;
     int j = m+1;
